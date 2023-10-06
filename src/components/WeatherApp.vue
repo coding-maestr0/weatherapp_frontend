@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <input type="text" class="search-bar" @keyup.enter="getWeather"
-                            placeholder="Type city name, zip to get weather details" v-model="loc" />
+                            placeholder="Enter the city name or zip code for weather details." v-model="loc" />
                     </div>
                     <div class="col-md-1">
                         <button class="btn btn-outline-info" @click="getWeather">
@@ -49,7 +49,7 @@ export default {
         getWeather() {
             let location = (this.loc == undefined || this.loc == "undefined" || this.loc == "") ? '' : this.loc;
             if ((this.loc == undefined || this.loc == "undefined" || this.loc == "")) {
-                Swal.fire({ title: 'Oops!', text: "Please enter location to see weather!!", icon: 'error', confirmButtonText: 'Okay' });
+                Swal.fire({ title: 'Oops!', text: "Please enter the city name or zip code for weather details.", icon: 'error', confirmButtonText: 'Okay' });
                 return;
             }
             http.getWeatherForecastForLocation(location).then((res) => {
@@ -186,5 +186,14 @@ main {
     width: 80%;
     height: 100%;
 }
+
+::placeholder { /* Edge 12 -18 */
+  color: white
+}
+
+svg {
+    color: white;
+}
+
 </style>
   
